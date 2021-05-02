@@ -2,5 +2,6 @@
 classes/
 output/
 temp/
+out/*
 
 !/src/org/yawlfoundation/yawl/balancer/output/

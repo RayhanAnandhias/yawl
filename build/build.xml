@@ -2628,6 +2628,7 @@
         <unzip dest="${enumeratedClasses}">
             <fileset dir="${lib.dir}" includes="${commonsCodec}"/>
         </unzip>
+        <mkdir dir="${temp.dir}/${proclet.app.name}${webinf.dir}/${proclet.app.name}/editor" /> <!-- NEW -->
         <jar destfile="${temp.dir}/${proclet.app.name}${webinf.dir}/${proclet.app.name}/editor/procletEditor.jar"
              basedir="${classes.dir}"
              includes="org/yawlfoundation/yawl/procletService/**/*
@@ -2793,6 +2794,20 @@
         increases permgen usage (so consider increasing permgen space from the
         default 64m via a -XX:MaxPermSize=Nm startup Java option).
     -->
+
+    <target name="deployWebappsWithoutTest"
+        description="Build and deploy all web apps"
+        depends="deployCoreWebapps,
+                deployMonitorService,
+                deployDigitalSignature,
+                deployMailSender,
+                deployCostService,
+                deployTwitterService,
+                deploySchedulingService,
+                deployDocStore,
+                deployProcletService,
+                deployNonCoreSharedLibs">
+    </target>
 
     <target name="deployWebapps"
             description="Build and deploy all web apps"
